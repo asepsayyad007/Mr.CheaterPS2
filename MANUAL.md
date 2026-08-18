@@ -23,22 +23,24 @@ You **do not need to switch between Gamepad and Keyboard profiles** in PCSX2. PC
 
 ### How to Play with your Controller while Cheats Work Simultaneously:
 
+In PCSX2 (Qt v1.7+ / v2.0+), simply clicking a button replaces its binding. To **add a secondary keyboard binding** without removing your gamepad:
+
 1. Open **PCSX2** -> **Settings** -> **Controllers** -> **Controller Port 1 (DualShock 2)**.
-2. Keep your **Physical Gamepad** mapped (e.g. Xbox Controller / DualSense / DualShock).
-3. Add **Keyboard secondary bindings** to the exact same buttons:
-   * **D-Pad Up**: `Up Arrow`
-   * **D-Pad Down**: `Down Arrow`
-   * **D-Pad Left**: `Left Arrow`
-   * **D-Pad Right**: `Right Arrow`
-   * **Triangle (△)**: `I`
-   * **Circle (◯)**: `L`
-   * **Cross (✕)**: `K`
-   * **Square (▢)**: `J`
-   * **L1**: `Q`, **L2**: `1`, **R1**: `E`, **R2**: `3`
-   * **Select**: `Backspace`, **Start**: `Return (Enter)`
+2. Keep your physical controller mapped.
+3. **Hold the `Shift` key on your keyboard and click on a button**, then press the corresponding keyboard key:
+   * **Hold Shift + Click `Triangle (△)`** -> Press `I`
+   * **Hold Shift + Click `Circle (◯)`** -> Press `L`
+   * **Hold Shift + Click `Cross (✕)`** -> Press `K`
+   * **Hold Shift + Click `Square (▢)`** -> Press `J`
+   * **Hold Shift + Click `D-Pad Up`** -> Press `Up Arrow`
+   * **Hold Shift + Click `D-Pad Down`** -> Press `Down Arrow`
+   * **Hold Shift + Click `D-Pad Left`** -> Press `Left Arrow`
+   * **Hold Shift + Click `D-Pad Right`** -> Press `Right Arrow`
+   * **Hold Shift + Click `L1 / L2 / R1 / R2`** -> Press `Q / 1 / E / 3`
+   * **Hold Shift + Click `Select / Start`** -> Press `Backspace / Enter`
 
 > [!NOTE]
-> PCSX2 allows multiple input sources per button. In the binding list, a button will display both your controller and keyboard (e.g. `SDL-0/Button Y, Keyboard/I`). This allows you to play the entire game with your physical controller, while Mr.Cheater injects cheats over the keyboard layer seamlessly.
+> Holding Shift tells PCSX2 to **append** the keyboard key instead of replacing your gamepad button. In the binding list, each button will display dual bindings (e.g. `SDL-0/Button Y, Keyboard/I`). This allows you to play the entire game with your physical controller, while Mr.Cheater injects cheats over the keyboard layer seamlessly.
 
 ---
 

@@ -20,14 +20,15 @@
 ## Table of Contents
 1. [Overview](#overview)
 2. [Key Capabilities](#key-capabilities)
-3. [Architecture and System Design](#architecture-and-system-design)
-4. [Downhill Domination Cheat Collection](#downhill-domination-cheat-collection)
-5. [Default PCSX2 Keyboard Layout](#default-pcsx2-keyboard-layout)
-6. [Getting Started and Installation](#getting-started-and-installation)
-7. [User Guide and Workflows](#user-guide-and-workflows)
-8. [Automated Testing and Validation](#automated-testing-and-validation)
-9. [Project Structure](#project-structure)
-10. [License](#license)
+3. [Dual-Binding Guide (Gamepad + Cheats Simultaneously)](#dual-binding-guide-gamepad--cheats-simultaneously)
+4. [Architecture and System Design](#architecture-and-system-design)
+5. [Downhill Domination Cheat Collection](#downhill-domination-cheat-collection)
+6. [Default PCSX2 Keyboard Layout](#default-pcsx2-keyboard-layout)
+7. [Getting Started and Installation](#getting-started-and-installation)
+8. [User Guide and Workflows](#user-guide-and-workflows)
+9. [Automated Testing and Validation](#automated-testing-and-validation)
+10. [Project Structure](#project-structure)
+11. [License](#license)
 
 ---
 
@@ -36,6 +37,32 @@
 **Mr.Cheater** is a high-performance Windows desktop application designed to eliminate manual, complex cheat-code sequences and repetitive controller macros in emulators and PC games.
 
 Many classic titles (such as *Downhill Domination*, *GTA San Andreas*, *God of War*) require complex button combinations (e.g. Master Codes) entered within tight frame windows. **Mr.Cheater** executes these sequences with microsecond precision, hardware scan-code simulation, automatic target window activation, and intelligent session-state tracking.
+
+---
+
+## Dual-Binding Guide (Gamepad + Cheats Simultaneously)
+
+You **do not need to switch profiles** between your Gamepad and Keyboard. In PCSX2, you can map both your physical controller and keyboard to Controller Port 1 simultaneously.
+
+### The "Hold Shift" Method in PCSX2:
+
+In PCSX2 (Qt v1.7+ / v2.0+), simply clicking a button replaces its existing binding. To **add a secondary keyboard binding** without removing your gamepad:
+
+1. Open **PCSX2** -> **Settings** -> **Controllers** -> **Controller Port 1 (DualShock 2)**.
+2. Keep your physical controller mapped.
+3. **Hold the `Shift` key on your keyboard and click on a button**, then press the corresponding keyboard key:
+   * **Hold Shift + Click `Triangle (△)`** -> Press `I`
+   * **Hold Shift + Click `Circle (◯)`** -> Press `L`
+   * **Hold Shift + Click `Cross (✕)`** -> Press `K`
+   * **Hold Shift + Click `Square (▢)`** -> Press `J`
+   * **Hold Shift + Click `D-Pad Up`** -> Press `Up Arrow`
+   * **Hold Shift + Click `D-Pad Down`** -> Press `Down Arrow`
+   * **Hold Shift + Click `D-Pad Left`** -> Press `Left Arrow`
+   * **Hold Shift + Click `D-Pad Right`** -> Press `Right Arrow`
+   * **Hold Shift + Click `L1 / L2 / R1 / R2`** -> Press `Q / 1 / E / 3`
+   * **Hold Shift + Click `Select / Start`** -> Press `Backspace / Enter`
+
+> **Result**: Each button in PCSX2 will display dual bindings (for example: `SDL-0/Button Y, Keyboard/I`). You can play 100% with your physical controller, and Mr.Cheater will inject cheats seamlessly over the keyboard layer when triggered via hotkey or dashboard.
 
 ---
 
@@ -192,6 +219,8 @@ Total tests: 17 | Passed: 17 | Failed: 0 | Skipped: 0
 
 ```text
 Mr.CheaterPS2/
+├── .agents/
+│   └── rules/                       # Persistent AI and Engineering Rules
 ├── .gitignore
 ├── CHANGELOG.md
 ├── LICENSE
