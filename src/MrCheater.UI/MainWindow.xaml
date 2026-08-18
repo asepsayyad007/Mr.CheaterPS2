@@ -31,9 +31,8 @@
 
                 <!-- Brand Title -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="⚡" FontSize="18" Foreground="{StaticResource AccentPrimaryBrush}" Margin="0,0,8,0" VerticalAlignment="Center" />
                     <TextBlock Text="Mr.Cheater" FontSize="16" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center" />
-                    <TextBlock Text="PS2 / UNIVERSAL" FontSize="10" FontWeight="Bold" Foreground="{StaticResource AccentPrimaryBrush}" Margin="6,2,0,0" VerticalAlignment="Center" />
+                    <TextBlock Text="PS2 / UNIVERSAL" FontSize="10" FontWeight="Bold" Foreground="{StaticResource AccentPrimaryBrush}" Margin="8,2,0,0" VerticalAlignment="Center" />
                 </StackPanel>
 
                 <!-- Center Status Pills -->
@@ -90,7 +89,7 @@
 
                 <!-- Emergency Stop Hotkey Button -->
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                    <Button Content="⛔ EMERGENCY STOP [Ctrl+Shift+Esc]"
+                    <Button Content="EMERGENCY STOP [Ctrl+Shift+Esc]"
                             Style="{StaticResource DangerButtonStyle}"
                             Padding="12,6" FontSize="11"
                             Command="{Binding TriggerEmergencyStopCommand}" />
@@ -110,27 +109,27 @@
             <Border Grid.Column="0" Background="{StaticResource SurfaceBrush}" BorderBrush="{StaticResource BorderDarkBrush}" BorderThickness="0,0,1,0" Padding="12,16">
                 <StackPanel>
                     
-                    <Button Content="📊 Dashboard" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,0,6" HorizontalContentAlignment="Left"
+                    <Button Content="Dashboard" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,0,6" HorizontalContentAlignment="Left"
                             Command="{Binding NavigateCommand}" CommandParameter="{x:Static vm:NavigationPage.Dashboard}" />
 
-                    <Button Content="⚡ Cheats Library" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,0,6" HorizontalContentAlignment="Left"
+                    <Button Content="Cheats Library" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,0,6" HorizontalContentAlignment="Left"
                             Command="{Binding NavigateCommand}" CommandParameter="{x:Static vm:NavigationPage.Cheats}" />
 
-                    <Button Content="✏ Sequence Editor" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,0,6" HorizontalContentAlignment="Left"
+                    <Button Content="Sequence Editor" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,0,6" HorizontalContentAlignment="Left"
                             Command="{Binding NavigateCommand}" CommandParameter="{x:Static vm:NavigationPage.SequenceEditor}" />
 
-                    <Button Content="🔁 Macro Engine" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,0,6" HorizontalContentAlignment="Left"
+                    <Button Content="Macro Engine" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,0,6" HorizontalContentAlignment="Left"
                             Command="{Binding NavigateCommand}" CommandParameter="{x:Static vm:NavigationPage.Macros}" />
 
-                    <Button Content="🎮 Controllers &amp; Keys" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,0,6" HorizontalContentAlignment="Left"
+                    <Button Content="Controllers &amp; Keys" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,0,6" HorizontalContentAlignment="Left"
                             Command="{Binding NavigateCommand}" CommandParameter="{x:Static vm:NavigationPage.Controllers}" />
 
-                    <Button Content="📁 Game Profiles" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,0,6" HorizontalContentAlignment="Left"
+                    <Button Content="Game Profiles" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,0,6" HorizontalContentAlignment="Left"
                             Command="{Binding NavigateCommand}" CommandParameter="{x:Static vm:NavigationPage.Profiles}" />
 
                     <Separator Background="{StaticResource BorderDarkBrush}" Margin="0,12" />
 
-                    <Button Content="⚙ Settings" Style="{StaticResource SecondaryButtonStyle}" HorizontalContentAlignment="Left"
+                    <Button Content="Settings" Style="{StaticResource SecondaryButtonStyle}" HorizontalContentAlignment="Left"
                             Command="{Binding NavigateCommand}" CommandParameter="{x:Static vm:NavigationPage.Settings}" />
 
                 </StackPanel>
@@ -170,7 +169,6 @@
                         CornerRadius="8" Padding="14,10"
                         Visibility="{Binding IsToastVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="⚡" Margin="0,0,8,0" Foreground="{StaticResource AccentPrimaryBrush}" FontWeight="Bold" />
                         <TextBlock Text="{Binding ToastMessage}" Foreground="{StaticResource TextPrimaryBrush}" FontWeight="SemiBold" FontSize="13" />
                     </StackPanel>
                 </Border>
@@ -188,7 +186,7 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="⚡ EXECUTING:" FontSize="11" FontWeight="Bold" Foreground="{StaticResource WarningBrush}" Margin="0,0,6,0" />
+                    <TextBlock Text="EXECUTING:" FontSize="11" FontWeight="Bold" Foreground="{StaticResource WarningBrush}" Margin="0,0,6,0" />
                     <TextBlock Text="{Binding ExecutingSequenceTitle}" FontSize="12" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,12,0" />
                     <TextBlock Text="{Binding ExecutionStatusMessage}" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" />
                 </StackPanel>

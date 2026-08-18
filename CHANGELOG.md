@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2026-08-18
 
-### 🚀 Added
-* **Universal Cheat & Macro Architecture**:
+### Added
+* **Universal Cheat and Macro Architecture**:
   * 5-project clean .NET 8 architecture (`MrCheater.Domain`, `MrCheater.Infrastructure`, `MrCheater.Core`, `MrCheater.UI`, `MrCheater.Tests`).
 * **Frame-Accurate Hardware Scan-Code Injection**:
   * Win32 `SendInput` keyboard simulation with direct hardware scancodes (`KEYEVENTF_SCANCODE`) for 100% compatibility with PCSX2, RetroArch, RPCS3, Dolphin, and DirectInput/RawInput games.
@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   * System-wide `Ctrl + Shift + Escape` hook that instantly aborts active sequences, clears queues, and releases all held hardware keys.
 * **Real-Time XInput Controller Visualizer**:
   * Sub-millisecond polling service for Xbox and DirectInput gamepads with live button lighting and stick axis telemetry.
-* **Visual Sequence Editor & Macro Engine**:
+* **Visual Sequence Editor and Macro Engine**:
   * Interactive UI for crafting custom button sequences, configuring hold/delay timings, and defining multi-loop combo macros.
 * **Curated Profile Library**:
   * Complete Downhill Domination (PS2) cheat collection (16 verified codes + Master Code prerequisite chain + cash turbo macro).
@@ -33,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * **Full Test Suite**:
   * 17 automated xUnit unit and integration tests covering prerequisite resolution, deep cloning, JSON roundtripping, emergency release, and live emulator execution.
 
-### 🛠 Changed
+### Changed
 * Standardized default PS2 keyboard layout to match official PCSX2 Qt keyboard mapping (`Triangle: I`, `Circle: L`, `Cross: K`, `Square: J`, `D-Pad: Arrows`).
 * Upgraded UI dispatcher communication to non-blocking `BeginInvoke` queues, eliminating UI thread contention.
 

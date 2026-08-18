@@ -56,15 +56,15 @@ public partial class MacrosViewModel : ObservableObject
             var result = await _sequenceEngine.ExecuteMacroAsync(macro, profile);
             if (result.Success)
             {
-                _mainVM.ShowToast($"✓ Macro '{macro.Name}' completed.", "Success");
+                _mainVM.ShowToast($"Macro '{macro.Name}' completed.", "Success");
             }
             else if (result.WasCancelled)
             {
-                _mainVM.ShowToast($"⚠ Macro '{macro.Name}' was stopped.", "Warning");
+                _mainVM.ShowToast($"Macro '{macro.Name}' cancelled.", "Warning");
             }
             else
             {
-                _mainVM.ShowToast($"❌ Macro failed: {result.Message}", "Error");
+                _mainVM.ShowToast($"Macro failed: {result.Message}", "Error");
             }
         }
         finally

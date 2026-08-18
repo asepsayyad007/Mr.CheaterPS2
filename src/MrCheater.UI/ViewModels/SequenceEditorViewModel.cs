@@ -291,12 +291,12 @@ public partial class SequenceEditorViewModel : ObservableObject
             var result = await _sequenceEngine.ExecuteCheatAsync(tempCheat, profile);
             if (result.Success)
             {
-                TestOutputLog = $"✓ Live Execution Succeeded! ({result.TotalStepsExecuted} steps in {result.ElapsedTime.TotalMilliseconds:F0}ms)";
-                _mainVM.ShowToast("✓ Live sequence sent to target!", "Success");
+                TestOutputLog = $"Live Execution Succeeded! ({result.TotalStepsExecuted} steps in {result.ElapsedTime.TotalMilliseconds:F0}ms)";
+                _mainVM.ShowToast("Live sequence sent to target!", "Success");
             }
             else
             {
-                TestOutputLog = $"❌ Live Execution Failed: {result.Message}";
+                TestOutputLog = $"Live Execution Failed: {result.Message}";
                 _mainVM.ShowToast($"Failed: {result.Message}", "Error");
             }
         }

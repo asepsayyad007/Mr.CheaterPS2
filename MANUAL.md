@@ -75,7 +75,7 @@ On first launch, you will be greeted by the **Setup Wizard**:
 2. Observe the top status pill: when PCSX2 is running, it shows `PCSX2 ● Active & Focused`.
 
 ### Step 3: Trigger a Cheat
-* **Method A (In-App Button)**: Go to **Dashboard** or **Cheats Library**, click **Execute ⚡** next to `Unlock Everything`.
+* **Method A (In-App Button)**: Go to **Dashboard** or **Cheats Library**, click **Execute** next to `Unlock Everything`.
 * **Method B (Global Hotkey)**: While playing the game in full screen or windowed mode, press **`F2`** (assigned to Unlock Everything) or **`F1`** (Master Code).
 * **Automated Result**: Mr.Cheater will automatically type the Master Code sequence, wait 150ms, and type the Unlock Everything sequence directly into PCSX2!
 
@@ -147,7 +147,7 @@ The Macro Engine allows you to automate combo attacks and repeating input loops:
 2. Click **+ Add New Macro**.
 3. Set the **Loop Count** (e.g., `1x` for a combo, or `5x` for a repeating cycle).
 4. Configure your step sequence with fine-grained delays (e.g., 50ms hold, 100ms delay between hits).
-5. Assign a global hotkey or click **Run Macro ⚡** to execute.
+5. Assign a global hotkey or click **Run Macro** to execute.
 
 ---
 

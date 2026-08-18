@@ -96,15 +96,15 @@ public partial class DashboardViewModel : ObservableObject
             var result = await _sequenceEngine.ExecuteCheatAsync(cheat, ActiveProfile);
             if (result.Success)
             {
-                _mainVM.ShowToast($"✓ {cheat.Name} sent successfully!", "Success");
+                _mainVM.ShowToast($"{cheat.Name} sent successfully!", "Success");
             }
             else if (result.WasCancelled)
             {
-                _mainVM.ShowToast($"⚠ {cheat.Name} was cancelled.", "Warning");
+                _mainVM.ShowToast("Execution cancelled.", "Warning");
             }
             else
             {
-                _mainVM.ShowToast($"❌ Failed: {result.Message}", "Error");
+                _mainVM.ShowToast($"Failed: {result.Message}", "Error");
             }
         }
         finally

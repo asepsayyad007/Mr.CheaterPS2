@@ -96,15 +96,15 @@ public partial class CheatsViewModel : ObservableObject
             var result = await _sequenceEngine.ExecuteCheatAsync(cheat, _profileService.ActiveProfile);
             if (result.Success)
             {
-                _mainVM.ShowToast($"✓ {cheat.Name} sequence sent successfully.", "Success");
+                _mainVM.ShowToast($"{cheat.Name} sequence sent successfully.", "Success");
             }
             else if (result.WasCancelled)
             {
-                _mainVM.ShowToast($"⚠ {cheat.Name} was stopped.", "Warning");
+                _mainVM.ShowToast("Execution cancelled.", "Warning");
             }
             else
             {
-                _mainVM.ShowToast($"❌ Failed: {result.Message}", "Error");
+                _mainVM.ShowToast($"Failed: {result.Message}", "Error");
             }
         }
         finally

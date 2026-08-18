@@ -29,7 +29,7 @@
 
             <StackPanel Grid.Column="1" Orientation="Horizontal">
                 <Button Content="Simulate Run" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,8,0" Command="{Binding TestSequenceMockCommand}" />
-                <Button Content="Test Live ⚡" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,8,0" Command="{Binding TestSequenceLiveCommand}" />
+                <Button Content="Test Live" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,8,0" Command="{Binding TestSequenceLiveCommand}" />
                 <Button Content="Save Cheat" Style="{StaticResource PrimaryButtonStyle}" Padding="18,8" Command="{Binding SaveCheatCommand}" />
             </StackPanel>
         </Grid>

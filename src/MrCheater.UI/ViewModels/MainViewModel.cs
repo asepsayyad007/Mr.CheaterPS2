@@ -249,7 +249,7 @@ public partial class MainViewModel : ObservableObject
     private void UpdateMasterCodeDisplay(string profileId)
     {
         IsMasterCodeActive = _sequenceEngine.IsMasterCodeActive(profileId);
-        MasterCodeStatusText = IsMasterCodeActive ? "Master: UNLOCKED ✓" : "Master: Not Applied";
+        MasterCodeStatusText = IsMasterCodeActive ? "Master: UNLOCKED" : "Master: Not Applied";
     }
 
     private void OnProcessStatusChanged(object? sender, TargetProcessStatus status)

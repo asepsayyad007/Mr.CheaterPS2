@@ -1,14 +1,14 @@
 <div align="center">
 
-# ⚡ Mr.Cheater (Universal Cheat & Macro Manager)
+# Mr.Cheater (Universal Cheat and Macro Manager)
 
-**A high-precision, frame-accurate Universal Game Cheat & Controller Macro Manager for Windows 10/11.**  
+**A high-precision, frame-accurate Universal Game Cheat and Controller Macro Manager for Windows 10/11.**  
 *Engineered specifically for PS2 Emulation (PCSX2), RetroArch, RPCS3, Dolphin, DuckStation, and Native PC Games.*
 
 [![.NET 8.0](https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011%20(x64)-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://microsoft.com/windows)
 [![PCSX2](https://img.shields.io/badge/Emulator-PCSX2%20Qt%20v1.7%2B-0052CC?style=for-the-badge&logo=playstation&logoColor=white)](https://pcsx2.net/)
-[![Build Status](https://img.shields.io/badge/Build-Passing%20(17%2F17%20Tests)-44CC11?style=for-the-badge&logo=checkmarx&logoColor=white)](#automated-testing--validation)
+[![Build Status](https://img.shields.io/badge/Build-Passing%20(17%2F17%20Tests)-44CC11?style=for-the-badge&logo=checkmarx&logoColor=white)](#automated-testing-and-validation)
 [![License](https://img.shields.io/badge/License-MIT-F58025?style=for-the-badge)](LICENSE)
 
 <br/>
@@ -17,42 +17,42 @@
 
 ---
 
-## 📖 Table of Contents
-1. [Overview](#-overview)
-2. [Key Capabilities](#-key-capabilities)
-3. [Architecture & System Design](#-architecture--system-design)
-4. [Downhill Domination & PCSX2 Cheat Collection](#-downhill-domination--pcsx2-cheat-collection)
-5. [Default PCSX2 Keyboard Layout](#-default-pcsx2-keyboard-layout)
-6. [Getting Started & Installation](#-getting-started--installation)
-7. [User Guide & Workflows](#-user-guide--workflows)
-8. [Automated Testing & Validation](#-automated-testing--validation)
-9. [Project Structure](#-project-structure)
-10. [License](#-license)
+## Table of Contents
+1. [Overview](#overview)
+2. [Key Capabilities](#key-capabilities)
+3. [Architecture and System Design](#architecture-and-system-design)
+4. [Downhill Domination Cheat Collection](#downhill-domination-cheat-collection)
+5. [Default PCSX2 Keyboard Layout](#default-pcsx2-keyboard-layout)
+6. [Getting Started and Installation](#getting-started-and-installation)
+7. [User Guide and Workflows](#user-guide-and-workflows)
+8. [Automated Testing and Validation](#automated-testing-and-validation)
+9. [Project Structure](#project-structure)
+10. [License](#license)
 
 ---
 
-## 🌟 Overview
+## Overview
 
-**Mr.Cheater** is a high-performance Windows desktop application designed to eliminate the frustration of manual, complex cheat-code sequences and repetitive controller macros in emulators and PC games.
+**Mr.Cheater** is a high-performance Windows desktop application designed to eliminate manual, complex cheat-code sequences and repetitive controller macros in emulators and PC games.
 
-Many classic titles (such as *Downhill Domination*, *GTA San Andreas*, *God of War*) require complex button combinations (e.g. `↑ △ ↓ ✕ ← ◯ → ▢` Master Codes) entered within tight frame windows. **Mr.Cheater** executes these sequences with microsecond precision, hardware scan-code simulation, automatic target window activation, and intelligent session-state tracking.
-
----
-
-## ⚡ Key Capabilities
-
-* 🎯 **Hardware Scan-Code Injection (`SendInput`)**: Injects raw `KEYEVENTF_SCANCODE` hardware packets directly into emulator input hooks (DirectInput, RawInput, SDL3), bypassing synthetic keystroke filters.
-* 🧠 **Smart Master Code Prerequisite Engine**: Automatically detects if a game requires a Master Code toggle, injects it once per session, and avoids accidental lockout on subsequent cheats.
-* 🪟 **Auto-Focus Target Window Switcher**: Seamlessly brings target emulator windows (`pcsx2-qt.exe`, etc.) to the foreground before typing, eliminating focus-lockout bugs.
-* 🎮 **Real-Time XInput Controller Visualizer**: Live gamepad telemetry with sub-millisecond polling for button states, thumbstick coordinates, and trigger axes.
-* ⌨ **Global Hotkey Daemon**: Execute any cheat or combo in-game with background hotkeys (e.g. `F1`, `F2`, `F4`) without alt-tabbing.
-* ⛔ **Zero-Latency Emergency Stop**: Press `Ctrl + Shift + Escape` anytime to instantly abort running sequences, clear input queues, and release all held keys.
-* 🔁 **Multi-Loop Controller Macro Engine**: Chain complex combos, delay timings, loops, and rapid-fire turbos.
-* 📁 **Universal Game & Emulator Profiles**: Fully decoupled JSON profile architecture supporting any game and emulator.
+Many classic titles (such as *Downhill Domination*, *GTA San Andreas*, *God of War*) require complex button combinations (e.g. Master Codes) entered within tight frame windows. **Mr.Cheater** executes these sequences with microsecond precision, hardware scan-code simulation, automatic target window activation, and intelligent session-state tracking.
 
 ---
 
-## 🏗 Architecture & System Design
+## Key Capabilities
+
+* **Hardware Scan-Code Injection (SendInput)**: Injects raw `KEYEVENTF_SCANCODE` hardware packets directly into emulator input hooks (DirectInput, RawInput, SDL3), bypassing synthetic keystroke filters.
+* **Smart Master Code Prerequisite Engine**: Automatically detects if a game requires a Master Code toggle, injects it once per session, and avoids accidental lockout on subsequent cheats.
+* **Auto-Focus Target Window Switcher**: Seamlessly brings target emulator windows (`pcsx2-qt.exe`, etc.) to the foreground before typing, eliminating focus-lockout issues.
+* **Real-Time XInput Controller Visualizer**: Live gamepad telemetry with sub-millisecond polling for button states, thumbstick coordinates, and trigger axes.
+* **Global Hotkey Daemon**: Execute any cheat or combo in-game with background hotkeys (e.g. `F1`, `F2`, `F4`) without alt-tabbing.
+* **Zero-Latency Emergency Stop**: Press `Ctrl + Shift + Escape` anytime to instantly abort running sequences, clear input queues, and release all held keys.
+* **Multi-Loop Controller Macro Engine**: Chain complex combos, delay timings, loops, and rapid-fire turbos.
+* **Universal Game and Emulator Profiles**: Fully decoupled JSON profile architecture supporting any game and emulator.
+
+---
+
+## Architecture and System Design
 
 Mr.Cheater is built on clean architectural principles, strictly separating domain logic, native OS infrastructure, execution engine services, and MVVM presentation:
 
@@ -76,40 +76,40 @@ graph TD
 
 ---
 
-## 🚵 Downhill Domination & PCSX2 Cheat Collection
+## Downhill Domination Cheat Collection
 
 Pre-packaged with full support for **Downhill Domination (PS2)** on PCSX2:
 
 | Cheat Code | In-Game Sequence | PCSX2 Keyboard Keys | Description |
 |---|---|---|---|
-| **Master Code** | `↑` `△` `↓` `✕` `←` `◯` `→` `▢` | `Up` `I` `Down` `K` `Left` `L` `Right` `J` | **Required prerequisite to enable cheats** |
-| **Unlock Everything** | `↓` `↑` `↑` `↓` `↓` `↑` `↑` | `Down` `Up` `Up` `Down` `Down` `Up` `Up` | Unlocks all riders, bikes, upgrades & tracks |
-| **Always Stoked** | `↓` `▢` `▢` `←` `◯` | `Down` `J` `J` `Left` `L` | **Permanent full adrenaline & infinite boost** |
-| **Infinite Energy** | `↓` `△` `←` `←` `▢` | `Down` `I` `Left` `Left` `J` | Unlimited stamina / no rider exhaustion |
-| **Restore Energy** | `↓` `→` `→` `←` `←` | `Down` `Right` `Right` `Left` `Left` | Instantly refills rider energy gauge |
-| **$5,000 Cash** | `→` `↑` `↑` `◯` `◯` `▢` | `Right` `Up` `Up` `L` `L` `J` | Grants $5,000 cash for shop purchases |
-| **$2,000 Cash** | `→` `△` `△` `←` | `Right` `I` `I` `Left` | Grants $2,000 cash instantaneously |
-| **Speed Freak** | `↓` `△` `→` `→` `▢` | `Down` `I` `Right` `Right` `J` | Uncaps top downhill speed limiter |
-| **Mega Flip** | `→` `↑` `↑` `→` `→` `▢` | `Right` `Up` `Up` `Right` `Right` `J` | Instant mid-air flips and spins |
-| **Super Bounce** | `←` `▢` `✕` `↑` `△` | `Left` `J` `K` `Up` `I` | Massive bounce height on landing contact |
-| **Super Bunny Hop** | `↑` `✕` `←` `▢` `↑` | `Up` `K` `Left` `J` `Up` | Triple height jump from flat terrain |
-| **Anti-Gravity** | `↓` `△` `▢` `▢` `↑` | `Down` `I` `J` `J` `Up` | Low gravity float physics on mountain jumps |
-| **Combat Upgrade** | `↑` `↓` `←` `→` `✕` | `Up` `Down` `Left` `Right` `K` | Upgrades standard attacks to heavy combat tier |
-| **Free Combat** | `↑` `↓` `←` `→` `▢` | `Up` `Down` `Left` `Right` `J` | Unlimited attacks without draining stamina |
-| **Infinite Bottles** | `↑` `✕` `←` `←` `◯` `◯` | `Up` `K` `Left` `Left` `L` `L` | Unlimited throwable water bottles |
+| **Master Code** | `UP` `TRIANGLE` `DOWN` `CROSS` `LEFT` `CIRCLE` `RIGHT` `SQUARE` | `Up` `I` `Down` `K` `Left` `L` `Right` `J` | Required prerequisite to enable cheats |
+| **Unlock Everything** | `DOWN` `UP` `UP` `DOWN` `DOWN` `UP` `UP` | `Down` `Up` `Up` `Down` `Down` `Up` `Up` | Unlocks all riders, bikes, upgrades and tracks |
+| **Always Stoked** | `DOWN` `SQUARE` `SQUARE` `LEFT` `CIRCLE` | `Down` `J` `J` `Left` `L` | Permanent full adrenaline and infinite boost |
+| **Infinite Energy** | `DOWN` `TRIANGLE` `LEFT` `LEFT` `SQUARE` | `Down` `I` `Left` `Left` `J` | Unlimited stamina / no rider exhaustion |
+| **Restore Energy** | `DOWN` `RIGHT` `RIGHT` `LEFT` `LEFT` | `Down` `Right` `Right` `Left` `Left` | Instantly refills rider energy gauge |
+| **$5,000 Cash** | `RIGHT` `UP` `UP` `CIRCLE` `CIRCLE` `SQUARE` | `Right` `Up` `Up` `L` `L` `J` | Grants $5,000 cash for shop purchases |
+| **$2,000 Cash** | `RIGHT` `TRIANGLE` `TRIANGLE` `LEFT` | `Right` `I` `I` `Left` | Grants $2,000 cash instantaneously |
+| **Speed Freak** | `DOWN` `TRIANGLE` `RIGHT` `RIGHT` `SQUARE` | `Down` `I` `Right` `Right` `J` | Uncaps top downhill speed limiter |
+| **Mega Flip** | `RIGHT` `UP` `UP` `RIGHT` `RIGHT` `SQUARE` | `Right` `Up` `Up` `Right` `Right` `J` | Instant mid-air flips and spins |
+| **Super Bounce** | `LEFT` `SQUARE` `CROSS` `UP` `TRIANGLE` | `Left` `J` `K` `Up` `I` | Massive bounce height on landing contact |
+| **Super Bunny Hop** | `UP` `CROSS` `LEFT` `SQUARE` `UP` | `Up` `K` `Left` `J` `Up` | Triple height jump from flat terrain |
+| **Anti-Gravity** | `DOWN` `TRIANGLE` `SQUARE` `SQUARE` `UP` | `Down` `I` `J` `J` `Up` | Low gravity float physics on mountain jumps |
+| **Combat Upgrade** | `UP` `DOWN` `LEFT` `RIGHT` `CROSS` | `Up` `Down` `Left` `Right` `K` | Upgrades standard attacks to heavy combat tier |
+| **Free Combat** | `UP` `DOWN` `LEFT` `RIGHT` `SQUARE` | `Up` `Down` `Left` `Right` `J` | Unlimited attacks without draining stamina |
+| **Infinite Bottles** | `UP` `CROSS` `LEFT` `LEFT` `CIRCLE` `CIRCLE` | `Up` `K` `Left` `Left` `L` `L` | Unlimited throwable water bottles |
 
 ---
 
-## 🎮 Default PCSX2 Keyboard Layout
+## Default PCSX2 Keyboard Layout
 
 Matches PCSX2 standard keyboard profiles out-of-the-box:
 
 ```
       [ Q ] (L1)                    [ E ] (R1)
       [ 1 ] (L2)                    [ 3 ] (R2)
-         ▲                             [ I ] (△)
-    [◄]  │  [►]                  [ J ] (▢)     [ L ] (◯)
-         ▼                             [ K ] (✕)
+         ▲                             [ I ] (Triangle)
+    [◄]  │  [►]                  [ J ] (Square)     [ L ] (Circle)
+         ▼                             [ K ] (Cross)
 
    [ W / A / S / D ] (L-Stick)    [ T / F / G / H ] (R-Stick)
    [ 2 ] (L3 Click)               [ 4 ] (R3 Click)
@@ -118,13 +118,13 @@ Matches PCSX2 standard keyboard profiles out-of-the-box:
 
 ---
 
-## 🚀 Getting Started & Installation
+## Getting Started and Installation
 
 ### Prerequisites
 * Windows 10 or Windows 11 (x64)
 * [.NET 8.0 SDK or Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0)
 
-### Clone & Build
+### Clone and Build
 ```powershell
 # Clone the repository
 git clone https://github.com/asepsayyad007/Mr.CheaterPS2.git
@@ -142,16 +142,16 @@ dotnet run --project src/MrCheater.UI
 
 ---
 
-## 🕹 User Guide & Workflows
+## User Guide and Workflows
 
 1. **Dashboard Tab**:
    * View live connection status for **Target Process (PCSX2)**, **Master Code State**, and **Controller**.
-   * Click **Execute ⚡** on any quick-cheat card to inject the sequence into PCSX2.
+   * Click **Execute** on any quick-cheat card to inject the sequence into PCSX2.
 2. **Cheats Library Tab**:
    * Search, filter, and inspect detailed sequence steps.
    * Customize hotkeys (`F1`-`F12`, `Ctrl+Key`), prerequisites, and delay timings.
 3. **Sequence Editor Tab**:
-   * Build custom input sequences with an interactive button palette (`↑`, `↓`, `△`, `◯`, `✕`, `▢`, `+ Delay`).
+   * Build custom input sequences with an interactive button palette.
    * Test sequences with simulated live run preview.
 4. **Macro Engine Tab**:
    * Create looped multi-step macro routines and combos with configurable loop counts.
@@ -161,7 +161,7 @@ dotnet run --project src/MrCheater.UI
 
 ---
 
-## 🧪 Automated Testing & Validation
+## Automated Testing and Validation
 
 The solution includes automated test coverage in `MrCheater.Tests`:
 
@@ -188,7 +188,7 @@ Total tests: 17 | Passed: 17 | Failed: 0 | Skipped: 0
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 Mr.CheaterPS2/
@@ -209,12 +209,6 @@ Mr.CheaterPS2/
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
-
-<div align="center">
-  <sub>Built with ❤️ for the retro gaming & emulation community.</sub>
-</div>
