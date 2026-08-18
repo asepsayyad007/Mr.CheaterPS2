@@ -1,0 +1,195 @@
+<UserControl x:Class="MrCheater.UI.Views.SequenceEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:MrCheater.UI.ViewModels"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=vm:SequenceEditorViewModel}"
+             d:DesignHeight="750" d:DesignWidth="950">
+
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Top Header & Actions -->
+        <Grid Grid.Row="0" Margin="0,0,0,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="{Binding EditorTitle}" FontSize="22" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" />
+                <TextBlock Text="Visually configure button sequence, timing delays, and prerequisites" FontSize="13" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,2,0,0" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button Content="Simulate Run" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,8,0" Command="{Binding TestSequenceMockCommand}" />
+                <Button Content="Test Live ⚡" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,8,0" Command="{Binding TestSequenceLiveCommand}" />
+                <Button Content="Save Cheat" Style="{StaticResource PrimaryButtonStyle}" Padding="18,8" Command="{Binding SaveCheatCommand}" />
+            </StackPanel>
+        </Grid>
+
+        <!-- Main Content Area: Left Details/Buttons, Right Steps Table -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="340" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Panel: Metadata & Action Palettes -->
+            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto" Margin="0,0,16,0">
+                <StackPanel>
+                    
+                    <!-- Metadata Card -->
+                    <Border Style="{StaticResource ModernCardStyle}" Margin="0,0,0,14">
+                        <StackPanel>
+                            <TextBlock Text="CHEAT DETAILS" FontSize="11" FontWeight="Bold" Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,10" />
+
+                            <TextBlock Text="Cheat Name:" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,4" />
+                            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" />
+
+                            <TextBlock Text="Description:" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,4" />
+                            <TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Height="50" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,10" />
+
+                            <Grid Margin="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0" Margin="0,0,6,0">
+                                    <TextBlock Text="Category:" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,4" />
+                                    <ComboBox ItemsSource="{Binding AvailableCategories}" SelectedItem="{Binding Category}" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Margin="6,0,0,0">
+                                    <TextBlock Text="Hotkey:" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,4" />
+                                    <TextBox Text="{Binding AssignedHotkey, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                            </Grid>
+
+                            <CheckBox Content="Requires Master Code" IsChecked="{Binding RequiresMasterCode}" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,4,0,10" />
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0" Margin="0,0,6,0">
+                                    <TextBlock Text="Delay (ms):" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,4" />
+                                    <TextBox Text="{Binding DefaultDelayMs, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Margin="6,0,0,0">
+                                    <TextBlock Text="Hold (ms):" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,4" />
+                                    <TextBox Text="{Binding DefaultHoldMs, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- PS2 / Gamepad Quick Input Palettes -->
+                    <Border Style="{StaticResource ModernCardStyle}" Margin="0,0,0,14">
+                        <StackPanel>
+                            <DockPanel Margin="0,0,0,8">
+                                <TextBlock Text="INPUT PALETTE" FontSize="11" FontWeight="Bold" Foreground="{StaticResource TextMutedBrush}" VerticalAlignment="Center" />
+                                <Button Content="{Binding IsRecording, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                        HorizontalAlignment="Right" />
+                            </DockPanel>
+
+                            <!-- D-Pad -->
+                            <TextBlock Text="Directional Pad:" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,4,0,4" />
+                            <WrapPanel Margin="0,0,0,8">
+                                <Button Content="↑ UP" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddActionCommand}" CommandParameter="UP" />
+                                <Button Content="↓ DOWN" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddActionCommand}" CommandParameter="DOWN" />
+                                <Button Content="← LEFT" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddActionCommand}" CommandParameter="LEFT" />
+                                <Button Content="→ RIGHT" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddActionCommand}" CommandParameter="RIGHT" />
+                            </WrapPanel>
+
+                            <!-- Face Buttons -->
+                            <TextBlock Text="Face Buttons:" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,4,0,4" />
+                            <WrapPanel Margin="0,0,0,8">
+                                <Button Content="△ Triangle" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddActionCommand}" CommandParameter="TRIANGLE" Foreground="#00FFCC" />
+                                <Button Content="◯ Circle" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddActionCommand}" CommandParameter="CIRCLE" Foreground="#FF6688" />
+                                <Button Content="✕ Cross" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddActionCommand}" CommandParameter="CROSS" Foreground="#88CCFF" />
+                                <Button Content="▢ Square" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddActionCommand}" CommandParameter="SQUARE" Foreground="#FF99FF" />
+                            </WrapPanel>
+
+                            <!-- Shoulders & Others -->
+                            <TextBlock Text="Bumpers, Triggers &amp; System:" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,4,0,4" />
+                            <WrapPanel Margin="0,0,0,8">
+                                <Button Content="L1" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddActionCommand}" CommandParameter="L1" />
+                                <Button Content="R1" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddActionCommand}" CommandParameter="R1" />
+                                <Button Content="L2" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddActionCommand}" CommandParameter="L2" />
+                                <Button Content="R2" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddActionCommand}" CommandParameter="R2" />
+                                <Button Content="Start" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddActionCommand}" CommandParameter="START" />
+                                <Button Content="Select" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddActionCommand}" CommandParameter="SELECT" />
+                                <Button Content="⏸ + Delay" Style="{StaticResource ActionButtonStyle}" Command="{Binding AddDelayStepCommand}" />
+                            </WrapPanel>
+
+                            <!-- Live Record Button -->
+                            <Button Content="⏺ Record Live Controller Inputs" Style="{StaticResource SecondaryButtonStyle}" Margin="0,6,0,0"
+                                    Command="{Binding ToggleRecordingCommand}" />
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Right Panel: Step Table & Manipulation Controls -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="120" />
+                </Grid.RowDefinitions>
+
+                <!-- Steps DataGrid -->
+                <Border Grid.Row="0" Style="{StaticResource ModernCardStyle}" Padding="0" Margin="0,0,0,10">
+                    <DataGrid ItemsSource="{Binding Steps}"
+                              SelectedItem="{Binding SelectedStep}"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              RowBackground="{StaticResource SurfaceCardBrush}"
+                              AlternatingRowBackground="{StaticResource SurfaceHoverBrush}"
+                              Foreground="{StaticResource TextPrimaryBrush}"
+                              GridLinesVisibility="Horizontal"
+                              HorizontalGridLinesBrush="{StaticResource BorderDarkBrush}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Action" Binding="{Binding ActionName}" Width="120" FontWeight="Bold" />
+                            <DataGridTextColumn Header="Type" Binding="{Binding ActionType}" Width="100" />
+                            <DataGridTextColumn Header="Hold (ms)" Binding="{Binding HoldDurationMs}" Width="100" />
+                            <DataGridTextColumn Header="Delay (ms)" Binding="{Binding DelayAfterMs}" Width="100" />
+                            <DataGridTextColumn Header="Comment / Key" Binding="{Binding Comment}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+
+                <!-- Step Control Buttons Bar -->
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+                    <Button Content="↑ Move Up" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,6,0" Command="{Binding MoveStepUpCommand}" />
+                    <Button Content="↓ Move Down" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,6,0" Command="{Binding MoveStepDownCommand}" />
+                    <Button Content="Duplicate Step" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,6,0" Command="{Binding DuplicateStepCommand}" />
+                    <Button Content="Remove Step" Style="{StaticResource DangerButtonStyle}" Margin="0,0,6,0" Command="{Binding RemoveStepCommand}" />
+                    <Button Content="Clear All" Style="{StaticResource SecondaryButtonStyle}" Command="{Binding ClearAllStepsCommand}" />
+                </StackPanel>
+
+                <!-- Test Output Log Terminal -->
+                <Border Grid.Row="2" Style="{StaticResource ModernCardStyle}" Padding="10">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <TextBlock Text="{Binding TestOutputLog}" FontFamily="Consolas, monospace" FontSize="11" Foreground="{StaticResource AccentPrimaryBrush}" TextWrapping="Wrap" />
+                    </ScrollViewer>
+                </Border>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

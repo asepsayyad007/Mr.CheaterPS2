@@ -1,0 +1,59 @@
+<Window x:Class="MrCheater.UI.Views.FirstRunWizardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:MrCheater.UI.ViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=vm:FirstRunWizardViewModel}"
+        Title="Welcome to Universal Cheat Manager"
+        Height="480" Width="600"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{StaticResource BgDarkBrush}"
+        WindowStyle="SingleBorderWindow">
+
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Top Banner -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="Welcome to Universal Cheat Manager" FontSize="20" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" />
+            <TextBlock Text="Quick setup wizard for input simulation, controller detection, and profiles" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,2,0,0" />
+        </StackPanel>
+
+        <!-- Step Content Area -->
+        <Border Grid.Row="1" Style="{StaticResource ModernCardStyle}" Margin="0,0,0,20">
+            <StackPanel VerticalAlignment="Center">
+                
+                <TextBlock Text="Initial Configuration" FontSize="16" FontWeight="Bold" Foreground="{StaticResource AccentPrimaryBrush}" Margin="0,0,0,12" />
+
+                <!-- Controller Status Badge -->
+                <Border Background="{StaticResource SurfaceHoverBrush}" CornerRadius="6" Padding="12" Margin="0,0,0,16">
+                    <DockPanel>
+                        <TextBlock Text="🎮 XInput Controller Status:" FontWeight="SemiBold" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding IsControllerDetected, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                   FontSize="12" FontWeight="Bold" Foreground="{StaticResource SuccessBrush}" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                    </DockPanel>
+                </Border>
+
+                <!-- Information -->
+                <TextBlock Text="Pre-configured profiles and emulators are ready:" FontWeight="SemiBold" FontSize="13" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,6" />
+                <TextBlock Text="• PCSX2 PlayStation 2 Emulator (pcsx2-qt.exe)" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="10,0,0,4" />
+                <TextBlock Text="• Downhill Domination (Full cheat code catalogue with Master Code)" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="10,0,0,4" />
+                <TextBlock Text="• Standard PS2 Keyboard &amp; Controller Input Mappings" FontSize="12" Foreground="{StaticResource TextSecondaryBrush}" Margin="10,0,0,4" />
+                <TextBlock Text="• Global Emergency Stop Hotkey: [Ctrl + Shift + Esc]" FontSize="12" Foreground="{StaticResource DangerBrush}" Margin="10,4,0,0" FontWeight="SemiBold" />
+
+            </StackPanel>
+        </Border>
+
+        <!-- Bottom Navigation -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Get Started →" Style="{StaticResource PrimaryButtonStyle}" Padding="24,8" Command="{Binding CompleteWizardCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>

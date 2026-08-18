@@ -1,0 +1,142 @@
+<UserControl x:Class="MrCheater.UI.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:MrCheater.UI.ViewModels"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=vm:SettingsViewModel}"
+             d:DesignHeight="800" d:DesignWidth="900">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="24">
+
+            <!-- Top Header -->
+            <Grid Margin="0,0,0,16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Application Settings" FontSize="22" FontWeight="Bold" Foreground="{StaticResource TextPrimaryBrush}" />
+                    <TextBlock Text="Input safety, global hotkeys, timing thresholds, and system integration" FontSize="13" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,2,0,0" />
+                </StackPanel>
+
+                <Button Grid.Column="1" Content="Save Settings" Style="{StaticResource PrimaryButtonStyle}" Padding="18,8" Command="{Binding SaveSettingsCommand}" />
+            </Grid>
+
+            <!-- Safety & Focus Protection -->
+            <Border Style="{StaticResource ModernCardStyle}" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="SAFETY &amp; TARGET PROTECTION" FontSize="12" FontWeight="Bold" Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,12" />
+
+                    <CheckBox Content="Require target emulator/game process to be running before executing sequences"
+                              IsChecked="{Binding RequireTargetProcessRunning}"
+                              Foreground="{StaticResource TextPrimaryBrush}"
+                              Margin="0,0,0,10" />
+
+                    <CheckBox Content="Only send input when target emulator window is actively focused (Prevents typing in other windows)"
+                              IsChecked="{Binding RequireTargetWindowFocus}"
+                              Foreground="{StaticResource TextPrimaryBrush}"
+                              Margin="0,0,0,10" />
+
+                    <CheckBox Content="Allow background input injection (Experimental - if supported by target emulator)"
+                              IsChecked="{Binding AllowBackgroundInput}"
+                              Foreground="{StaticResource TextPrimaryBrush}"
+                              Margin="0,0,0,6" />
+                </StackPanel>
+            </Border>
+
+            <!-- Hotkeys & Emergency Stop -->
+            <Border Style="{StaticResource ModernCardStyle}" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="GLOBAL HOTKEYS &amp; EMERGENCY STOP" FontSize="12" FontWeight="Bold" Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,12" />
+
+                    <Grid Margin="0,0,0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="220" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                            <TextBlock Text="Emergency Stop Hotkey:" FontWeight="SemiBold" Foreground="{StaticResource DangerBrush}" />
+                            <TextBlock Text="Instantly aborts any active sequence and releases keys" FontSize="11" Foreground="{StaticResource TextSecondaryBrush}" TextWrapping="Wrap" />
+                        </StackPanel>
+
+                        <TextBox Grid.Column="1" Text="{Binding EmergencyStopHotkey, UpdateSourceTrigger=PropertyChanged}" Width="250" HorizontalAlignment="Left" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- Default Timing Configuration -->
+            <Border Style="{StaticResource ModernCardStyle}" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="DEFAULT TIMING THRESHOLDS" FontSize="12" FontWeight="Bold" Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,12" />
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="220" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Global Default Delay (ms):" VerticalAlignment="Center" Foreground="{StaticResource TextSecondaryBrush}" />
+                        <TextBox Grid.Column="1" Text="{Binding DefaultGlobalDelayMs, UpdateSourceTrigger=PropertyChanged}" Width="150" HorizontalAlignment="Left" />
+                    </Grid>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="220" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Global Default Hold Duration (ms):" VerticalAlignment="Center" Foreground="{StaticResource TextSecondaryBrush}" />
+                        <TextBox Grid.Column="1" Text="{Binding DefaultHoldDurationMs, UpdateSourceTrigger=PropertyChanged}" Width="150" HorizontalAlignment="Left" />
+                    </Grid>
+
+                    <Grid Margin="0,0,0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="220" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Max Sequence Watchdog Timeout (s):" VerticalAlignment="Center" Foreground="{StaticResource TextSecondaryBrush}" />
+                        <TextBox Grid.Column="1" Text="{Binding MaxSequenceDurationSeconds, UpdateSourceTrigger=PropertyChanged}" Width="150" HorizontalAlignment="Left" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- System Integration -->
+            <Border Style="{StaticResource ModernCardStyle}" Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="SYSTEM TRAY &amp; NOTIFICATIONS" FontSize="12" FontWeight="Bold" Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,12" />
+
+                    <CheckBox Content="Minimize application to System Tray on close"
+                              IsChecked="{Binding MinimizeToTray}"
+                              Foreground="{StaticResource TextPrimaryBrush}"
+                              Margin="0,0,0,10" />
+
+                    <CheckBox Content="Enable floating toast notifications for sequence status"
+                              IsChecked="{Binding EnableToastNotifications}"
+                              Foreground="{StaticResource TextPrimaryBrush}"
+                              Margin="0,0,0,10" />
+
+                    <CheckBox Content="Start minimized to system tray"
+                              IsChecked="{Binding StartMinimized}"
+                              Foreground="{StaticResource TextPrimaryBrush}"
+                              Margin="0,0,0,6" />
+                </StackPanel>
+            </Border>
+
+            <!-- Diagnostics & Storage Folder Links -->
+            <Border Style="{StaticResource ModernCardStyle}">
+                <StackPanel>
+                    <TextBlock Text="STORAGE &amp; DIAGNOSTICS" FontSize="12" FontWeight="Bold" Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,12" />
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="📂 Open Profiles &amp; Data Directory" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,10,0" Command="{Binding OpenDataFolderCommand}" />
+                        <Button Content="📝 View Application Logs" Style="{StaticResource SecondaryButtonStyle}" Command="{Binding OpenLogsFolderCommand}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
